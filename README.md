@@ -11,9 +11,12 @@ This **Dockerfile** will install [Apache Airflow](https://airflow.incubator.apac
 
 1. Install [Docker](https://www.docker.com/).
 
-2. Build the image from Dockerfile: `docker build -t=airflow github.com/ull-isaatc/airflow-docker`
+2. Download [PostgresSQL container](https://hub.docker.com/_/postgres/) from public [Docker Hub Registry](https://registry.hub.docker.com/): `docker pull postgres`
+
+3. Build the image from Dockerfile: `docker build -t=airflow github.com/ull-isaatc/airflow-docker`
 
 ### Usage
 
-    docker run --rm -e LOAD_EX=y -p 8080:8080 airflow webserver
+    # docker run --name some-postgres -e POSTGRES_USER=airflow -e POSTGRES_PASSWORD=airflow -e POSTGRES_DB=airflow -d postgres
+    # docker run --name some-airflow  -e LOAD_EX=y -p 8080:8080 airflow webserver
 
